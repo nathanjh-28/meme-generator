@@ -1,4 +1,5 @@
 import React from "react";
+import memesData from "../memesData"
 
 
 export default function Meme() {
@@ -9,6 +10,13 @@ export default function Meme() {
      * Log the URL of the image to the console. (Don't worry
      * about displaying the image yet)
      */
+
+    function handleClickEvent() {
+        const randomIdx = Math.floor((Math.random() * memesData.data.memes.length));
+        //console.log(memesData.data.memes[randomIdx].url)
+        console.log(memesData.data.memes[Math.floor((Math.random() * memesData.data.memes.length))].url);
+    }
+
     return (
         <main>
             <div className="form">
@@ -23,6 +31,7 @@ export default function Meme() {
                     className="form--input"
                 />
                 <button
+                    onClick={handleClickEvent}
                     className="form--button"
                 >
                     Get a new meme image 🖼
