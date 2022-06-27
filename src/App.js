@@ -5,11 +5,9 @@ import './style.css'
 
 export default function App() {
     return (
-        <>
+        <div>
             <Header />
-            <div className="container">
-                <Meme />
-            </div>
-        </>
+            <Meme />
+        </div>
     )
 }

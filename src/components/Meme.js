@@ -12,7 +12,7 @@ export default function Meme() {
     })
 
     // ______________________All Memes State
-    const [allMemeImages] = React.useState(memesData)
+    const [allMemeImages, setAllMemeImages] = React.useState(memesData)
 
 
     // ______________________Event Handler
@@ -28,6 +28,15 @@ export default function Meme() {
         })
     }
 
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setMeme(prev => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    }
 
     // ______________________JSX
     return (
@@ -37,21 +46,32 @@ export default function Meme() {
                     type="text"
                     placeholder="Top text"
                     className="form--input"
+                    onChange={handleChange}
+                    name="topText"
+                    value={meme.topText}
+
+
                 />
                 <input
                     type="text"
                     placeholder="Bottom text"
                     className="form--input"
+                    onChange={handleChange}
+                    name="bottomText"
+                    value={meme.bottomText}
+
                 />
                 <button
-                    onClick={handleClickEvent}
                     className="form--button"
+                    onClick={handleClickEvent}
                 >
                     Get a new meme image 🖼
                 </button>
             </div>
-            <div className="imgContainer">
-                <img src={meme.randomImage} alt="" />
+            <div className="meme">
+                <img src={meme.randomImage} className="meme--image" />
+                <h2 className="meme--text top">{meme.topText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
         </main>
     )
