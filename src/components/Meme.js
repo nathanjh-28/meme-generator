@@ -15,9 +15,13 @@ export default function Meme() {
     const [allMemeImages, setAllMemeImages] = React.useState([])
 
     React.useEffect(() => {
-        fetch(apiURL)
-            .then(res => res.json())
-            .then(data => setAllMemeImages(data.data.memes))
+        async function getMemes() {
+            const res = await fetch(apiURL)
+            const data = await res.json()
+            setAllMemeImages(data.data.memes)
+
+        }
+        getMemes()
     }, [])
 
     // ______________________Event Handler
